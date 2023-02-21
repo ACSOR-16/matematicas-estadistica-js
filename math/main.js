@@ -7,8 +7,6 @@ function calcularCuacrado (ladoCuadrado) {
   });
 }
 
-calcularCuacrado();
-
 // FUNCION PARA CALCULAR EL TRIANGULO
 function calcularTriangulo(ladoTriangulo1, ladoTriangulo2, ladoTriangulo3, base, altura)  {
   return({
@@ -17,8 +15,7 @@ function calcularTriangulo(ladoTriangulo1, ladoTriangulo2, ladoTriangulo3, base,
   })
 }
 
-calcularTriangulo();
-
+// ALTURA DE TRIANGULO ISOSELES
 function calcularTrianguloIsoseles (ladoIso, base) {
   if (ladoIso == base) {
     console.warn("Este no es un Triangulo Isoseles")
@@ -29,17 +26,19 @@ function calcularTrianguloIsoseles (ladoIso, base) {
   }  
 }
 
+// ALTURA DE TRIANGULO ESCALENO
 function calcularTrianguloEscaleno(primerLado, segundoLado, tercerLado) {
   const semiPerimetro = (primerLado + segundoLado + tercerLado) / 2;
   const areaTriangulo = Math.sqrt(semiPerimetro * (semiPerimetro - primerLado) * (semiPerimetro - segundoLado) * (semiPerimetro - tercerLado));
   
   return({
-    alturaPrimerLado: areaTriangulo * 2 - primerLado,
-    alturaSegundLado: areaTriangulo * 2 - segundoLado,
-    alturaTercerLado: areaTriangulo * 2 - tercerLado,
+    alturaPrimerLado: areaTriangulo * 2 / primerLado,
+    alturaSegundLado: areaTriangulo * 2 / segundoLado,
+    alturaTercerLado: areaTriangulo * 2 / tercerLado,
   })
 }
 
+// CALCULAR CIRCUNFERENCIA Y AREA DE CIRCULO
 function calcularCirculo(radioCirculo){
   const diametroCirulo = radioCirculo * 2;
   return({
