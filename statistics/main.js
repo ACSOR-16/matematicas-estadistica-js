@@ -10,3 +10,9 @@ function mediaAritmetica(array) {
 }
 
 mediaAritmetica([1, 2, 3, 4, 5, 6]);
+
+function mediaAritmeticaReduce(array) {
+  initialValue = 0;
+  const sumWithInitialValue = array.reduce( (acucumulator, currentValue) => acucumulator + currentValue, initialValue);
+  return sumWithInitialValue / array.length;
+}
