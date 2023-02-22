@@ -9,8 +9,6 @@ function mediaAritmetica(array) {
   return calcularMediaAritmetica;
 }
 
-mediaAritmetica([1, 2, 3, 4, 5, 6]);
-
 function mediaAritmeticaReduce(array) {
   initialValue = 0;
   
@@ -29,7 +27,8 @@ function esImpar(array) {
   return array.length % 2;
 }
 
-function calcularMediana(array) {
+function calcularMediana(arrayDesordenado) {
+  const array = ordenarArray(arrayDesordenado);
   const arrayEsPar = esPar(array) // solo validadcion
   
   if (arrayEsPar) {
@@ -50,4 +49,8 @@ function calcularMediana(array) {
   }
 }
 
-calcularMediana([1,2,3,4]);
+// FUNCION PARA ORDENAR LISTA O ARRAY
+function ordenarArray(arrayDesordenado) {
+  const array = arrayDesordenado.sort((valorAComparar, valorComparado) => valorAComparar - valorComparado);
+  return array;
+}
