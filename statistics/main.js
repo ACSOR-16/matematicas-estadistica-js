@@ -30,10 +30,20 @@ function esImpar(array) {
 }
 
 function calcularMediana(array) {
-  const arrayEsPar = esImpar(array)
+  const arrayEsPar = esPar(array) // solo validadcion
   
   if (arrayEsPar) {
-      
+    let arrayMitadades = []
+    const elementoPrimero = array[array.length / 2];
+    const elementoSegundo = array[array.length / 2 - 1];
+    
+    arrayMitadades.push(elementoPrimero);
+    arrayMitadades.push(elementoSegundo);
+    console.log(elementoPrimero);
+    console.log(arrayMitadades);
+    console.log(arrayEsPar);
+    const calcularMedianaArrayPar = mediaAritmeticaReduce(arrayMitadades);
+    return calcularMedianaArrayPar
   } else {
     const indexMitadListaImpar = Math.floor(array.length / 2);
     const medianaListaImpar = array[indexMitadListaImpar];
@@ -41,3 +51,5 @@ function calcularMediana(array) {
     return medianaListaImpar;
   }
 }
+
+calcularMediana([1,2,3,4]);
