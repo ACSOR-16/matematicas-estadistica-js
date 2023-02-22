@@ -39,11 +39,9 @@ function calcularMediana(array) {
     
     arrayMitadades.push(elementoPrimero);
     arrayMitadades.push(elementoSegundo);
-    console.log(elementoPrimero);
-    console.log(arrayMitadades);
-    console.log(arrayEsPar);
+    
     const calcularMedianaArrayPar = mediaAritmeticaReduce(arrayMitadades);
-    return calcularMedianaArrayPar
+    return calcularMedianaArrayPar;
   } else {
     const indexMitadListaImpar = Math.floor(array.length / 2);
     const medianaListaImpar = array[indexMitadListaImpar];
