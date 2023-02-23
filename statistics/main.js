@@ -54,3 +54,30 @@ function ordenarArray(arrayDesordenado) {
   const array = arrayDesordenado.sort((valorAComparar, valorComparado) => valorAComparar - valorComparado);
   return array;
 }
+
+// FUNCION PARA ORDENAR LISTASBIDIMENCIONALES
+function ordenarArrayBidimensional(arrayDesordenado, i) {
+  const array = arrayDesordenado.sort((valorAComparar, valorComparado) => valorAComparar[i] - valorComparado[i]);
+  return array;
+}
+
+// CALCULAR MODA
+function calcularModa(array) {
+  const modaObj = {};
+
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    
+    if (modaObj[element]) {
+      modaObj[element] += 1;
+    } else {
+      modaObj[element] = 1;
+    }
+  }
+
+  const arrayobj = Object.entries(modaObj);
+  const arrayBidOrd = ordenarArrayBidimensional(arrayobj,1)
+  const arrayNumMax = arrayBidOrd[arrayBidOrd.length - 1];
+  const moda = arrayNumMax[0];
+  return moda;
+}
