@@ -1,5 +1,7 @@
+const StatdMath = {};
+
 // CALCULO DE MEDIA ARITMETICA
-function mediaAritmetica(array) {
+StatdMath.mediaAritmetica = function mediaAritmetica(array) {
   let totalArray = 0;
   for (let index = 0; index < array.length; index++) {
     totalArray = totalArray + array[index];
@@ -9,7 +11,7 @@ function mediaAritmetica(array) {
   return calcularMediaAritmetica;
 }
 
-function mediaAritmeticaReduce(array) {
+StatdMath.mediaAritmeticaReduce = function mediaAritmeticaReduce(array) {
   initialValue = 0;
   
   const sumWithInitialValue = array.reduce( (acucumulator, currentValue) => acucumulator + currentValue, initialValue);
@@ -19,17 +21,17 @@ function mediaAritmeticaReduce(array) {
 }
 
 // CALCULO DE MEDIANA 
-function esPar(array) {
+StatdMath.esPar = function esPar(array) {
   return !(array.length % 2);
 }
 
-function esImpar(array) {
+StatdMath.esImpar = function esImpar(array) {
   return array.length % 2;
 }
 
-function calcularMediana(arrayDesordenado) {
-  const array = ordenarArray(arrayDesordenado);
-  const arrayEsPar = esPar(array) // solo validadcion
+StatdMath.calcularMediana = function calcularMediana(arrayDesordenado) {
+  const array = StatdMath.ordenarArray(arrayDesordenado);
+  const arrayEsPar = StatdMath.esPar(array) // solo validadcion
   
   if (arrayEsPar) {
     let arrayMitadades = []
@@ -39,7 +41,7 @@ function calcularMediana(arrayDesordenado) {
     arrayMitadades.push(elementoPrimero);
     arrayMitadades.push(elementoSegundo);
     
-    const calcularMedianaArrayPar = mediaAritmeticaReduce(arrayMitadades);
+    const calcularMedianaArrayPar = StatdMath.mediaAritmeticaReduce(arrayMitadades);
     return calcularMedianaArrayPar;
   } else {
     const indexMitadListaImpar = Math.floor(array.length / 2);
@@ -50,19 +52,19 @@ function calcularMediana(arrayDesordenado) {
 }
 
 // FUNCION PARA ORDENAR LISTA O ARRAY
-function ordenarArray(arrayDesordenado) {
+StatdMath.ordenarArray = function ordenarArray(arrayDesordenado) {
   const array = arrayDesordenado.sort((valorAComparar, valorComparado) => valorAComparar - valorComparado);
   return array;
 }
 
 // FUNCION PARA ORDENAR LISTASBIDIMENCIONALES
-function ordenarArrayBidimensional(arrayDesordenado, i) {
+StatdMath.ordenarArrayBidimensional = function ordenarArrayBidimensional(arrayDesordenado, i) {
   const array = arrayDesordenado.sort((valorAComparar, valorComparado) => valorAComparar[i] - valorComparado[i]);
   return array;
 }
 
 // CALCULAR MODA
-function calcularModa(array) {
+StatdMath.calcularModa = function calcularModa(array) {
   const modaObj = {};
 
   for (let index = 0; index < array.length; index++) {
