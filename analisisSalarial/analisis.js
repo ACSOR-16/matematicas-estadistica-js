@@ -36,7 +36,6 @@ function proyeccioPersona(nombreDePersona) {
 // ANALISIS EMRESARIAL
 // RESTRUCTURACION DE INFORMACION POR EMPRESA
 const empresas = {};
-
 for (const persona of salarios) {
   for (const trabajo of persona.trabajos ) {
     if (!empresas[trabajo.empresa]) {
@@ -49,4 +48,15 @@ for (const persona of salarios) {
     empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
   } 
 }
-console.log(empresas);
+// console.log(empresas.Freelance);
+console.log(empresas["Freelance"]);
+
+function medianaEmpresaYear(empresa, year) {
+  if (!empresas[empresa]) {
+    console.warn(`no existe la empresa`);
+  } else if (!empresas[empresa][year]) {
+    console.warn(`no existen moviemintos de salarios`);
+  } else {
+    return StatdMath.calcularMediana(empresas[empresa][year]);
+  }
+}
