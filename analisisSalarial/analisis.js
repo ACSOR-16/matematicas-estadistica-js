@@ -1,6 +1,4 @@
-console.log(salarios);
-
-//FUNCION PARA BUSQUEDA DE UNA PERSONA
+//ANALISI PERSONAL POR PERSONA
 function encontrarPersona(personaEnBusqueda) {
   return salarios.find( (persona) => persona.name == personaEnBusqueda);
   // const person = salarios.find( (persona) => {
@@ -34,3 +32,21 @@ function proyeccioPersona(nombreDePersona) {
   const salarioProyectado = ultimoSalario + (medianaPorcentualSalaria * ultimoSalario);
   return salarioProyectado;
 }
+
+// ANALISIS EMRESARIAL
+// RESTRUCTURACION DE INFORMACION POR EMPRESA
+const empresas = {};
+
+for (const persona of salarios) {
+  for (const trabajo of persona.trabajos ) {
+    if (!empresas[trabajo.empresa]) {
+      empresas[trabajo.empresa] = {};
+    }
+    if (!empresas[trabajo.empresa][trabajo.year]) {
+      empresas[trabajo.empresa][trabajo.year] = [];
+    }
+
+    empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
+  } 
+}
+console.log(empresas);
