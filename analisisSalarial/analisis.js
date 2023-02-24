@@ -60,3 +60,29 @@ function medianaEmpresaYear(empresa, year) {
     return StatdMath.calcularMediana(empresas[empresa][year]);
   }
 }
+
+function proyeccionEmpresarial(empresa) {
+  if (!empresas[empresa]) {
+    console.warn(`no existe la empresa`);
+  } else {
+    const empresaYears = Object.keys(empresas[empresa]);
+    const listaMedianaYears = empresaYears.map((year)=> {
+      return medianaEmpresaYear(empresa, year);
+    });
+    
+    let PorcentajesEntrePerido = [];
+
+    for (let index = 1; index < listaMedianaYears.length; index++) {
+      const medianaAnualAnterior = listaMedianaYears[index - 1];
+      const medianaAnualActual = listaMedianaYears[index];
+      const crecimiento =  medianaAnualActual - medianaAnualAnterior;
+      const porcentajeCrecimiento = crecimiento / medianaAnualAnterior;
+      PorcentajesEntrePerido.push(porcentajeCrecimiento);
+    }
+    const medianaPorcentualIncremental = StatdMath.calcularMediana(PorcentajesEntrePerido);
+    const ultimoPeriodo = listaMedianaYears[listaMedianaYears.length - 1];
+    const creciemientoPerido = medianaPorcentualIncremental * ultimoPeriodo;
+    const proyeccionAnual = creciemientoPerido + ultimoPeriodo;
+    return proyeccionAnual;
+  }
+}
